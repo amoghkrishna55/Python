@@ -1,0 +1,7 @@
+mysql> drop database bankproject;
+
+mysql> create database bankproject;
+
+
+
+mysql -u root -p bankproject < C:\MySQLBackup\bankproject.sql
