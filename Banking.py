@@ -140,15 +140,16 @@ def find_account():
       print('Search Result for ', field_name, ' ',value)
       print('-'*80)
       for record in records:
-       print(record[0],
-             record[1],
-             record[2],
-             record[3],
-             record[4],
-             record[5],
-             record[6],
-             record[7],
-             record[8])
+       print('Account No :',record[0])
+       print('Account Name :',record[1])
+       print('Address :',record[2])
+       print('Phone NO :',record[3])
+       print('Email ID :',record[4])
+       print('Aadhar No :',record[5])
+       print('Account Type :',record[6])
+       print('Account Status :',record[7])
+       print('Current Balance :',record[8])
+       print("-"*80)
       if(n <= 0):
         print(field_name, ' ', value, ' does not exist')
       wait = input('\n\n\n Press any key to continue....')
@@ -168,34 +169,13 @@ def daily_report():
    records = cursor.fetchall()
    clear()
    print('Daily Report :',today)
-   print('-'*120)
+   print('-'*60)
    for record in records:
-       print(record[0], record[1], record[2], record[3], record[4])
-   print('-'*120)
-
-   conn.close()
-   wait = input('\n\n\n Press any key to continue....')
-
-
-def monthly_report():
-   clear()
-
-   conn = mysql.connector.connect(
-       host='localhost', database='bankproject', user='root', password='amogh')
-   today = date.today()
-   cursor = conn.cursor()
-   sql = 'select tid,dot,amount,type,acno from transaction t where month(dot)="' + \
-       str(today).split('-')[1]+'";'
-   cursor.execute(sql)
-   records = cursor.fetchall()
-   clear()
-   print(sql)
-   print('Monthly Report :', str(today).split(
-       '-')[1], '-,', str(today).split('-')[0])
-   print('-'*120)
-   for record in records:
-       print(record[0], record[1], record[2], record[3], record[4])
-   print('-'*120)
+       print('Account Number :',record[4])
+       print('Date :',record[1])
+       print('Amount :',record[2])
+       print('Transaction type :',record[3])
+       print('-'*60)
 
    conn.close()
    wait = input('\n\n\n Press any key to continue....')
@@ -212,7 +192,7 @@ def account_details():
     result = cursor.fetchone()
     clear()
     print('Account Details')
-    print('-'*120)
+    print('-'*60)
     print('Account No :',result[0])
     print('Account Name :',result[1])
     print('Address :',result[2])
@@ -222,11 +202,15 @@ def account_details():
     print('Account Type :',result[6])
     print('Account Status :',result[7])
     print('Current Balance :',result[8])
-    print('-'*120)
+    print('-'*60)
     cursor.execute(sql1)
     results = cursor.fetchall()
     for result in results:
-        print(result[0], result[1], result[2], result[3])
+      
+       print('Date :',result[1])
+       print('Amount :',result[2])
+       print('Transaction type :',result[3])
+       print('-'*60)
 
     conn.close()
     wait=input('\n\n\nPress any key to continue.....')
@@ -236,18 +220,15 @@ def report_menu():
       clear()
       print(' Report Menu')
       print("\n1.  Daily Report")
-      print('\n2.  Monthly Report')
-      print('\n3.  Account Details')
-      print('\n4.  Back to Main Menu')
+      print('\n2.  Account Details')
+      print('\n3.  Back to Main Menu')
       print('\n\n')
       choice = int(input('Enter your choice ...: '))
       if choice == 1:
         daily_report()
       if choice == 2:
-        monthly_report()
-      if choice == 3:
         account_details()
-      if choice == 4:
+      if choice == 3:
         break
 
 def add_account():
