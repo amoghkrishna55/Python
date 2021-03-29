@@ -304,6 +304,8 @@ def activate_account():
 def main_menu():
     while True:
       clear()
+      print('                           CREATED BY: AMOGH AND KUSHAL ')
+      print('\n\n')
       print(' Main Menu')
       print("\n1.  Add Account")
       print('\n2.  Modify Account')
