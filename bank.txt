@@ -4,5 +4,5 @@ mysql> create database bankproject;
 
 https://de16.seedr.cc/ff_get/991962639/The.Martian.2015.1080p.BluRay.x264-%5BYTS.AG%5D.mp4?st=_INBQFzP-ZbqFmcBauq-kA&e=1630423878
 
-
+idk whgat to do
 mysql -u root -p bankproject < C:\MySQLBackup\bankproject.sql
